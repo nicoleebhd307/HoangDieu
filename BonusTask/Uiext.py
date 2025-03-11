@@ -12,13 +12,10 @@ class EmployeeExt(QtWidgets.QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
 
-        # Load employee data
         self.df = load_employee_data()
 
-        # Add age column
         self.df['Age'] = self.df['Dob'].apply(calculate_age)
 
-        # Connect signals and slots
         self.actionExit.triggered.connect(self.close)
         self.btnShowAll.clicked.connect(self.show_all)
         self.btnBorn2001.clicked.connect(self.show_born_2001)
@@ -26,11 +23,9 @@ class EmployeeExt(QtWidgets.QMainWindow, Ui_MainWindow):
         self.btnTesters.clicked.connect(self.show_testers)
         self.btnRoleCount.clicked.connect(self.show_role_count)
 
-        # Show all data initially when the object is created
         self.show_all()
 
     def showWindow(self):
-        # Just show the window, data is already loaded in __init__
         self.show()
 
     def show_all(self):
